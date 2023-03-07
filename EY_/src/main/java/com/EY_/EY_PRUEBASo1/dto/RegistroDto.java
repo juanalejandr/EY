@@ -19,7 +19,6 @@ public class RegistroDto implements Serializable {
     @Email
     private String email;
     @NotEmpty(message = "debe ingresar una contraseña valida")
-
      private String password;
     @ElementCollection
     private ArrayList<PhoneDto> phones;

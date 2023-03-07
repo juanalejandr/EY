@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 @Entity
 public class Phone {
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "number", nullable = false)

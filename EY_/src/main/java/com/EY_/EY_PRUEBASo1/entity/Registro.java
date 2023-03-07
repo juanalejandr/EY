@@ -1,14 +1,20 @@
 package com.EY_.EY_PRUEBASo1.entity;
 
-import com.EY_.EY_PRUEBASo1.dto.ClaveDeValidacion;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+
 
 
 import java.time.Instant;
 import java.util.ArrayList;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -27,10 +33,11 @@ import java.util.UUID;
         @JsonProperty(value = "Password")
         private String password;
 
-        @ElementCollection
+        @OneToMany(mappedBy="id")
         @Column(name = "phones", nullable = false)
-        @JsonProperty(value = "Phones")
-        private ArrayList <Phone> phones;
+        @JsonProperty(value = "phones")
+        private List<Phone> phones;
+
 
         @Column(name = "token")
         @JsonProperty(value = "Token")
@@ -82,15 +89,15 @@ import java.util.UUID;
             this.password = password;
         }
 
-    public ArrayList<Phone> getPhones() {
-        return phones;
-    }
+        public List<Phone> getPhones() {
+            return phones;
+        }
 
-    public void setPhones(ArrayList<Phone> phones) {
-        this.phones = phones;
-    }
+        public void setPhones(List<Phone> phones) {
+            this.phones = phones;
+        }
 
-    public UUID getId() {
+        public UUID getId() {
             return id;
         }
 

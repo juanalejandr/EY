@@ -33,11 +33,10 @@ public class RegistroServiceImpl implements RegistroService{
 
     @Override
     public RegistroDtoResp crearRegistro(RegistroDto registroDto) throws ServiceException {
-        final Logger LOG = Logger.getLogger("paquete.NombreClase");
-        //LOG.info(registroDto.toString());
+
         try {
             Registro registro=mapearEntidad(registroDto);
-            //LOG.info(registro.getToken());
+
             registro.setToken(jwt.generateToken(registro.getEmail(),registro.getName()));
 
             registroRepository.save(registro);

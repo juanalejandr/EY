@@ -20,6 +20,11 @@ public class RegistroController {
     @Autowired
     private RegistroService registroService;
 
+    public RegistroController(RegistroService registroService) {
+        this.registroService = registroService;
+    }
+
+
     @PostMapping
     public ResponseEntity<RegistroDtoResp> crearRegistro(@Valid @RequestBody RegistroDto registroDto) throws ServiceException {
         return new ResponseEntity<>(registroService.crearRegistro(registroDto), HttpStatus.CREATED);
